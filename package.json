@@ -1,22 +1,28 @@
 {
   "name": "@paramlabs/ui",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "type": "module",
   "exports": {
     ".": {
-      "import":"./dist/index.js",
-      "types":"./dist/index.d.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./components": {
-      "import":"./dist/components/index.js",
-      "types":"./dist/components/index.d.ts"
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
     },
     "./utils": {
-      "import":"./dist/utils/index.js",
-      "types":"./dist/utils/index.d.ts"
+      "import": "./dist/utils/index.js",
+      "types": "./dist/utils/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "types": "./dist/hooks/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
@@ -45,6 +51,7 @@
     "rollup": "^4.29.1",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-filesize": "^10.0.0",
+    "rollup-plugin-multi-input": "^1.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "tslib": "^2.8.1",

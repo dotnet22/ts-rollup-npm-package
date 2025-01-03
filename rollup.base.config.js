@@ -4,7 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import json from "@rollup/plugin-json";
-import multi from "@rollup/plugin-multi-entry";
+import multiInput from 'rollup-plugin-multi-input';
 import { babel } from "@rollup/plugin-babel";
 
 export default {
@@ -28,6 +28,6 @@ export default {
     }),
     postcss(),
     json(),
-    //multi(),
+    multiInput.default(),
   ],
 };

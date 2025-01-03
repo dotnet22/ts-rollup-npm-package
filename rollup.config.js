@@ -15,9 +15,14 @@ const extensions = [".js", ".ts", ".jsx", ".tsx"];
 export default [
   {
     input: [
-      "./src/index.ts",
-      ...getFiles("./src/components", extensions),
-      ...getFiles("./src/utils", extensions),
+      "src/**/*.ts",
+      //   "./src/index.ts",
+      //   "./src/utils/index.ts",
+      //   "./src/components/index.ts",
+      //   "./src/hooks/index.ts",
+      //   ...getFiles("./src/components", extensions),
+      //   ...getFiles("./src/utils", extensions),
+      //   ...getFiles("./src/hooks", extensions),
     ],
     output: {
       dir: "dist",
@@ -29,12 +34,4 @@ export default [
     external: ["react", "react-dom", ...Object.keys(globals)],
     plugins: [...baseConfig.plugins, terser()],
   },
-  //   {
-  //     input: "src/index.ts",
-  //     output: {
-  //       file: "dist/index.d.ts",
-  //       format: "esm",
-  //     },
-  //     plugins: [dts.default()],
-  //   },
 ];
