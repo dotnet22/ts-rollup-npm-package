@@ -2,6 +2,7 @@
 import terser from "@rollup/plugin-terser";
 import baseConfig from "./rollup.base.config.js";
 import dts from "rollup-plugin-dts";
+import multi from '@rollup/plugin-multi-entry';
 const packageJson = require("./package.json");
 
 export default [
@@ -21,7 +22,7 @@ export default [
     ],
     external: ["react", "react-dom"],
     preserveModules: true,
-    plugins: [...baseConfig.plugins, terser()],
+    plugins: [multi(), ...baseConfig.plugins, terser()],
   },
   {
     input: "src/index.ts", // Type Definitions

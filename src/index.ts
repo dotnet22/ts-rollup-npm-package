@@ -1,2 +1,2 @@
-export { default as ExampleComponent } from './components/ExampleComponent';
-
+export * from "./components";
+export * from "./utils"
