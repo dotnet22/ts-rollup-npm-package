@@ -9,23 +9,25 @@ import { babel } from "@rollup/plugin-babel";
 
 export default {
   plugins: [
-      peerDepsExternal(),
-      resolve({
+    peerDepsExternal(),
+    resolve({
       browser: true,
       preferBuiltins: false,
     }),
     commonjs(),
     babel({
-        babelHelpers: "bundled",
-        exclude: /node_modules/,
-        presets: ["@babel/preset-react", "@babel/preset-typescript"],
+      babelHelpers: "bundled",
+      exclude: /node_modules/,
+      presets: ["@babel/preset-react", "@babel/preset-typescript"],
     }),
     typescript({
-        tsconfig: "./tsconfig.json",
-        outputToFilesystem: true,
+      tsconfig: "./tsconfig.json",
+      //outputToFilesystem: true,
+      //declaration: true,
+      exclude: ["**/*.test.tsx", "**/*.test.ts", "**/*.stories.ts"],
     }),
     postcss(),
     json(),
-    multi(),
+    //multi(),
   ],
 };

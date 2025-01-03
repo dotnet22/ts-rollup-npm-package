@@ -1,14 +1,22 @@
 {
-  "name": "mkui",
-  "version": "1.0.0",
+  "name": "@paramlabs/ui",
+  "version": "2.0.5",
   "type": "module",
-  "exports":{
-    ".":{
-      "require":"./dist/index.js",
-      "import":"./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import":"./dist/index.js",
       "types":"./dist/index.d.ts"
+    },
+    "./components": {
+      "import":"./dist/components/index.js",
+      "types":"./dist/components/index.d.ts"
+    },
+    "./utils": {
+      "import":"./dist/utils/index.js",
+      "types":"./dist/utils/index.d.ts"
     }
   },
+  "files": ["dist"],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",

@@ -3,32 +3,38 @@ import terser from "@rollup/plugin-terser";
 import baseConfig from "./rollup.base.config.js";
 import dts from "rollup-plugin-dts";
 const packageJson = require("./package.json");
+import { getFiles } from "./scripts/buildUtils";
+
+const globals = {
+  ...packageJson.dependencies,
+  ...packageJson.devDependencies,
+};
+
+const extensions = [".js", ".ts", ".jsx", ".tsx"];
 
 export default [
   {
-    input: ["src/**/*.ts"], // Entry point for the library
-    output: [
-      {
-        file: packageJson.main, // Output for CommonJS (e.g., main.js)
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: packageJson.module, // Output for ES6 modules
-        format: "esm",
-        sourcemap: true,
-      },
+    input: [
+      "./src/index.ts",
+      ...getFiles("./src/components", extensions),
+      ...getFiles("./src/utils", extensions),
     ],
-    external: ["react", "react-dom"],
-    preserveModules: true,
+    output: {
+      dir: "dist",
+      format: "esm",
+      preserveModules: true,
+      preserveModulesRoot: "src",
+      sourcemap: true,
+    },
+    external: ["react", "react-dom", ...Object.keys(globals)],
     plugins: [...baseConfig.plugins, terser()],
   },
-  {
-    input: "src/index.ts", // Type Definitions
-    output: {
-      file: "dist/index.d.ts",
-      format: "esm",
-    },
-    plugins: [dts.default()],
-  },
+  //   {
+  //     input: "src/index.ts",
+  //     output: {
+  //       file: "dist/index.d.ts",
+  //       format: "esm",
+  //     },
+  //     plugins: [dts.default()],
+  //   },
 ];
